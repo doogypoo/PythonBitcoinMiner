@@ -9,6 +9,8 @@ from threading import Thread
 from colorthon import Colors as Fore
 import sys, logging
 
+#pip install colortuon
+
 # Define your Bitcoin address
 address = "14qWDpjPeHzJUAHaMCGSBSnJKCJbfZJkmp"
 # Initialize the current block height
