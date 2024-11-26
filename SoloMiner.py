@@ -351,7 +351,7 @@ def bitcoin_miner(t, restarted=False):
             payload = bytes('{"params": ["' + address + '", "' + ctx.job_id + '", "' + ctx.extranonce2 + '", "' + ctx.ntime + '", "' + nonce + '"], "id": 1, "method": "mining.submit"}\n', 'utf-8')
             print(Fore.MAGENTA, '[', timer(), ']', Fore.BLUE, '[*] Payload:', Fore.GREEN, ' {}'.format(payload))
             sock.sendall(payload)
-            ret = sock.recv(1024)
+            ret = sock.recv(2048)
             print(Fore.MAGENTA, '[', timer(), ']', Fore.GREEN, '[*] Pool Response:', Fore.CYAN, ' {}'.format(ret))
             print(payload)
             block_found_splash(block_found_ascii_art)
@@ -372,7 +372,7 @@ def bitcoin_miner(t, restarted=False):
             sock.sendall(share_payload.encode())
             
             # Receive and handle the pool's response
-            response = sock.recv(1024).decode()
+            response = sock.recv(2048).decode()
             
             # Log and print the response for monitoring purposes
             print(Fore.MAGENTA, '[', timer(), ']', Fore.GREEN, '[*] Pool Response for share submission:', Fore.CYAN, ' {}'.format(response))
