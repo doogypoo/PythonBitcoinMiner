@@ -70,13 +70,22 @@ def logg(msg):
 
 # Function to get the current network block height
 def get_current_block_height():
-    r = requests.get('https://blockchain.info/latestblock')
-    return int(r.json()['height'])
+
+    try:
+        r = requests.get('https://blockchain.info/latestblock')
+        return int(r.json()['height'])
+    except requests.exceptions.RequestException as e:
+         logg('Error occurred: {e}')
+         return cHeight
+    
 
 
 # Function for the mining process
 def BitcoinMiner(restart=False):
     # Function to handle the mining process
+
+    #InitRandom
+    random.seed(time.time())
 
     sock = None
 
