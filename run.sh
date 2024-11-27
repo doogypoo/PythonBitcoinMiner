@@ -1,4 +1,4 @@
-nohup ./start.sh &
-nohup ./start.sh &
-nohup ./start.sh &
-./start.sh
+./start.sh &>/dev/null &
+./start.sh &>/dev/null &
+./start.sh &>/dev/null &
+./start.sh>/dev/null &
